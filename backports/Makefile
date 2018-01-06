@@ -14,6 +14,7 @@ NOSTDINC_FLAGS := \
 	-DCONFIG_BACKPORT_VERSION=\"$(BACKPORTS_VERSION)\" \
 	-DCONFIG_BACKPORT_KERNEL_VERSION=\"$(BACKPORTED_KERNEL_VERSION)\" \
 	-DCONFIG_BACKPORT_KERNEL_NAME=\"$(BACKPORTED_KERNEL_NAME)\" \
+	-Wno-int-conversion -DCONFIG_ANDROID_BINDER_DEVICES="\"binder\"" \
 	$(BACKPORTS_GIT_TRACKER_DEF) \
 	$(CFLAGS)
 
@@ -26,6 +27,7 @@ NOSTDINC_FLAGS := \
 	-I$(backport_srctree)/backport-include/uapi \
 	-I$(backport_srctree)/include/ \
 	-I$(backport_srctree)/include/uapi \
+	-Wno-int-conversion -DCONFIG_ANDROID_BINDER_DEVICES="\"binder\"" \
 	-include $(backport_srctree)/backport-include/backport/backport.h \
 	$(CFLAGS)
 endif
@@ -54,3 +56,5 @@ obj-$(CONFIG_BACKPORT_MAC802154) += net/mac802154/
 
 # obj-$(CONFIG_BACKPORT_USB_WDM) += drivers/usb/class/
 # obj-$(CONFIG_BACKPORT_USB_USBNET) += drivers/net/usb/
+
+obj-$(CONFIG_BACKPORT_ANDROID) += drivers/android/binder/

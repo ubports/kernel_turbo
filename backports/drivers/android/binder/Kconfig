@@ -1,0 +1,21 @@
+menu "Backport Android"
+
+config BACKPORT_ANDROID
+	bool "Android Drivers"
+	default N
+	---help---
+	  Enable support for various drivers needed on the Android platform
+
+if BACKPORT_ANDROID
+
+config BACKPORT_ANDROID_BINDER_IPC
+	bool "Android Binder IPC Driver"
+	default n
+	
+config BACKPORT_ANDROID_BINDER_IPC_32BIT
+    bool "32bit binder"
+    default n
+
+endif # if BACKPORT_ANDROID
+
+endmenu
